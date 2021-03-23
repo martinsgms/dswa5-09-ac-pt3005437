@@ -9,5 +9,48 @@
     <img src="Logo.jpg" alt=" " />
     <h1>Avaliação contínua</h1>
     <h2>Aluno do IFSP, bem-vindo ao <%=nome %> </h2>
+
+    <a href="/contatos" target="_blank">Contatos</a>
+    <ul id="listaContatos"></ul>
+    
+    <a href="/cursos" target="_blank">Cursos</a>
+    <ul id="listaCursos"></ul>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        var listaContatos = $('#listaContatos');
+        var listaCursos = $('#listaCursos');
+
+        var contatos = [];
+        var cursos = [];
+
+        fetch(new Request('/contatos', { method: 'GET' }))
+        .then(response => {
+            response.json()
+                .then(json => {
+                    contatos = json;
+                    json.forEach((c, i) => listaContatos.append(`<li><a href="/contatos/${c._id}" target="_blank">Contato: ${i+1}</a></li>`));
+                }).then(() => {
+                    let contatosIdInvalido = Math.max(...contatos.map(c => c._id)) + 1;
+                    listaContatos.append(`<li><a href="/contatos/${contatosIdInvalido}" target="_blank">Contato: ${contatosIdInvalido}</a></li>`);
+                });
+        })
+
+        fetch(new Request('/cursos', { method: 'GET' }))
+        .then(response => {
+            response.json()
+                .then(json => {
+                    cursos = json;
+                    json.forEach((c, i) => listaCursos.append(`<li><a href="/cursos/${c._id}" target="_blank">Curso: ${i+1}</a></li>`));
+            }).then(() => {
+                let cursosIdInvalido = Math.max(...cursos.map(c => c._id)) + 1;
+                listaCursos.append(`<li><a href="/cursos/${cursosIdInvalido}" target="_blank">Curso: ${cursosIdInvalido}</a></li>`);
+            });       
+        })
+
+    </script>
+
 </body>
 </html>
+

@@ -11,6 +11,11 @@ ngApp.config($routeProvider => {
         controller : 'ContatosController'
     });
 
+    $routeProvider.when('/cursos', {
+        templateUrl : '/partials/cursos.html',
+        controller : 'CursosController'
+    });
+
     $routeProvider.when('/contato/:id', {
         templateUrl : '/partials/contato.html',
         controller : 'ContatoController'

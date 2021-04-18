@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IFSP - Pirituba</title>
 </head>
-<body ng-controller="ContatosController">
-    
-    <h1>Bem vindo ao IFSP</h1>
-    <button ng-click="incrementa()">Novo</button>
-    <p>Contatos cadastrados: {{total}}</p>
+<body>
+    <a href="/#/contatos">Link</a>
+    <div ng-view></div>
 
     <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-route/angular-route.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/controllers/ContatosController.js"></script>
+    <script src="js/controllers/ContatoController.js"></script>
 </body>
 </html>

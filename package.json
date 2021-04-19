@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "bower cache clean && bower install"
+    "preinstall": "npm cache clean -f",
+    "postinstall": "npm audit fix && bower cache clean -f && bower install"
   },
   "author": "",
   "license": "ISC",

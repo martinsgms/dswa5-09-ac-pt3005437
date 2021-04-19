@@ -1,8 +1,8 @@
-var ngApp = angular.module('ifsp', ['ngRoute']);
+var ngApp = angular.module('ifsp', ['ngRoute', 'ngResource']);
 
 ngApp.config(['$locationProvider', function($locationProvider) {
     $locationProvider.hashPrefix('');
-  }]);
+}]);
 
 ngApp.config($routeProvider => {
     

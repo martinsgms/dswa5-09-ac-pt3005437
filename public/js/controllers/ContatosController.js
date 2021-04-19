@@ -1,16 +1,20 @@
-ngApp.controller('ContatosController', function($scope) {
-        $scope.total = 0;
+ngApp.controller('ContatosController', function($scope, $resource) {
+        
+    $scope.filtro = '';
+    $scope.contatos = []
 
-        $scope.incrementa = () => {
-            $scope.total++;
-        }
+    let Contato = $resource('/contatos');
 
-        $scope.contatos = [
-            { _id: 1, nome: 'Gabriel Martins', email: 'gabriel.martins@ifsp.edu.br' },
-            { _id: 2, nome: 'Maria Aparecida', email: 'maria.aparecida@ifsp.edu.br' },
-            { _id: 3, nome: 'João Teixeira', email: 'joao.teixeira@ifsp.edu.br' }
-        ]
-
-        $scope.filtro = '';
+    function buscaContatos() {
+        Contato.query(
+            function(contatos) {
+                $scope.contatos = contatos;
+            }, 
+            function(erro) {
+                console.error(`Não foi possível obter os contatos: ${erro}`);
+            }
+        );
     }
-)
+
+    buscaContatos();
+})

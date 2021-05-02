@@ -41,7 +41,7 @@
         </tr>
         </tr>
         <tr ng-repeat="c in contatos | filter : filtro">
-            <td>{{c.nome}}</td>
+            <td><a ng-href='#/contato/{{c._id}}'>{{c.nome}}</a></td>
             <td>{{c.email}}</td>
             <td class="text-center"><button ng-click='remove(c)' class="btn btn-warning">Remover</button></td>
         </tr>

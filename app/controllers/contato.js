@@ -16,7 +16,7 @@ module.exports = () => {
 
         let idContato = req.params.id;
         let contato = contatos.filter(contato => contato._id == idContato)[0];
-
+        
         contato ? res.json(contato) : res.status(404).send('Contato não encontrado!');
     };
 

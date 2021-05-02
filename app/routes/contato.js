@@ -1,6 +1,11 @@
 
 module.exports = app => {
     var controller = app.controllers.contato;
-    app.get('/contatos', controller.listContatos);
-    app.get('/contatos/:id', controller.getContato);
+    
+    app.route('/contatos')
+        .get(controller.listContatos);
+    
+    app.route('/contatos/:id')
+        .get(controller.getContato)
+        .delete(controller.removeContato);
 }

@@ -22,8 +22,8 @@ module.exports = () => {
 
     controller.removeContato = function(req, res) {
         let idContato = req.params.id;
-        contatos = contatos.filter(contato => contato._id != idContato);
-        
+        contatos = contatos.filter(c => c._id != idContato);
+
         res.send(204).end();
     };
 

@@ -21,5 +21,12 @@ module.exports =  ()  => {
         curso ? res.json(curso) : res.status(404).send('Curso não encontrado!');
     };
 
+    controller.removeCurso = function(req, res) {
+        let idCurso = req.params.id;
+        cursos = cursos.filter(c => c._id != idCurso);
+        
+        res.send(204).end();
+    };
+
     return controller;
 };

@@ -1,6 +1,11 @@
 
 module.exports = app => {
     var controller = app.controllers.curso;
-    app.get('/cursos', controller.listCursos);
-    app.get('/cursos/:id', controller.getCurso);
+
+    app.route('/cursos')
+        .get(controller.listCursos);
+    
+    app.route('/cursos/:id')
+        .get(controller.getCurso)
+        .delete(controller.removeCurso);
 }

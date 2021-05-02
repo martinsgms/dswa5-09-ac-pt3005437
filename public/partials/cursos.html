@@ -41,7 +41,7 @@
         </tr>
         </tr>
         <tr ng-repeat="c in cursos | filter : filtro">
-            <td>{{c.curso}}</td>
+            <td><a ng-href='#/curso/{{c._id}}'>{{c.curso}}</a></td>
             <td>{{c.coordenador}}</td>
             <td class="text-center"><button ng-click='remove(c)' class="btn btn-warning">Remover</button></td>
         </tr>

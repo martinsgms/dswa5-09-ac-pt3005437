@@ -3,7 +3,8 @@ module.exports = app => {
     var controller = app.controllers.contato;
     
     app.route('/contatos')
-        .get(controller.listContatos);
+        .get(controller.listContatos)
+        .post(controller.salvaContato);
     
     app.route('/contatos/:id')
         .get(controller.getContato)

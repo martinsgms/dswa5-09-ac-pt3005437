@@ -1,7 +1,5 @@
-ngApp.controller('ContatoController', function($scope, $routeParams, $resource) {
+ngApp.controller('ContatoController', function($scope, $routeParams, Contato) {
     
-    var Contato = $resource('/contatos/:id');
-
     if ($routeParams.id) {
         Contato.get({ id: $routeParams.id },
             function(contato) {

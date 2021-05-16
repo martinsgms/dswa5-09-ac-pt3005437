@@ -1,10 +1,8 @@
-ngApp.controller('ContatosController', function($scope, $resource) {
+ngApp.controller('ContatosController', function($scope, Contato) {
         
     $scope.filtro = '';
     $scope.contatos = [];
     $scope.mensagem = { texto: '' };
-
-    let Contato = $resource('/contatos/:id');
 
     function buscaContatos() {
         Contato.query(

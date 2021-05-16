@@ -1,6 +1,4 @@
-ngApp.controller('CursoController', function($scope, $routeParams, $resource) {
-    
-    var Curso = $resource('/cursos/:id');
+ngApp.controller('CursoController', function($scope, $routeParams, Curso) {
 
     if ($routeParams.id) {
         Curso.get({ id: $routeParams.id },

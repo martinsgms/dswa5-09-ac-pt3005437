@@ -1,10 +1,8 @@
-ngApp.controller('CursosController', function($scope, $resource) {
+ngApp.controller('CursosController', function($scope, Curso) {
         
     $scope.filtro = '';
     $scope.cursos = [];
     $scope.mensagem = { texto: '' };
-
-    let Curso = $resource('/cursos/:id');
 
     function buscaCursos() {
         Curso.query(

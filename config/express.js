@@ -5,7 +5,8 @@ var load = require('express-load');
 module.exports = function(){
 	var app = express();
 
-	app.set('port', process.env.PORT);
+	//app.set('port', process.env.PORT);
+	app.set('port', 5000);
 
 	app.use(express.static('./public'));
 	app.use(bodyParser.urlencoded({extended: true}));

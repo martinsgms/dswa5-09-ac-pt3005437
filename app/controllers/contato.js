@@ -1,66 +1,66 @@
 
-module.exports = function(app) {
+module.exports = app => {
     
     var Contato = app.models.contato;
     var controller = {};
 
-    controller.listContatos = function(req, res) {
+    controller.listContatos = (req, res) => {
         
         Contato.find().exec().then(
-            function(contatos) {
+            contatos => {
                 res.json(contatos);
             },
-            function(erro) {
+            erro => {
                 console.error(error)
                 res.status(500).json(erro);
             }
         );
     };
 
-    controller.getContato = function(req, res) {
+    controller.getContato = (req, res) => {
         var _id = req.params.id;
         Contato.findById(_id).exec().then(
-            function(contato) {
+            contato => {
                 if (!contato) throw new Error("Contato não encontrado");
-                res.json(contato)
+                res.json(contato);
             },
-            function(erro) {
+            erro => {
                 console.log(erro);
-                res.status(404).json(erro)
+                res.status(404).json(erro);
             }
         );
     };
 
-    controller.removeContato = function(req, res) {
+    controller.removeContato = (req, res) => {
         var _id = req.params.id;
         Contato.deleteOne({"_id": _id}).exec().then(
-            function() {
+            () => {
                 res.end();
             },
-            function(erro) {
-                return console.error(erro);
+            erro => {
+                console.error(erro);
             }
         );
     };
 
-    controller.salvaContato = function(req, res) {
+    controller.salvaContato = (req, res) => {
         var _id = req.body._id;
         if (_id) {
             Contato.findByIdAndUpdate(_id, req.body).exec().then(
-                function(contato) { 
+                contato => { 
                     res.json(contato);
                 },
-                function(erro) {
+                erro => {
                     console.error(erro)
                     res.status(500).json(erro);
                 }
             );
         } else {
             Contato.create(req.body).then(
-                function(contato) {
+                contato => {
                     res.status(201).json(contato);
                 },
-                function(erro) {
+                erro => {
                     console.log(erro);
                     res.status(500).json(erro);
             });
